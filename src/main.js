@@ -3,10 +3,10 @@ import Router from 'vue-router';
 import {
     sync
 } from 'vuex-router-sync';
-import store from './vuex/store';
 import App from './App.vue';
-import filters from './filter';
 import index from './views/index.vue';
+import page1 from './views/page-1.vue';
+import page2 from './views/page-2.vue';
 window.Vue = Vue;
 Vue.use(Router);
 const router = new Router({
@@ -15,10 +15,6 @@ const router = new Router({
     saveScrollPosition: true
 });
 window.router = router;
-
-Object.keys(filters).forEach((k) => {
-    Vue.filter(k, filters[k]);
-});
 
 Vue.use(require('vue-resource'));
 Vue.http.options.root = '/root';
@@ -31,13 +27,20 @@ router.map({
     },
     '/index': {
         name: 'index',
-        component: index
+        component: index,
+        subRoutes:{
+            '/page1': {
+                name: 'page1',
+                component: page1
+            },
+            '/page2': {
+                name: 'page2',
+                component: page2
+            }
+        }
     }
 });
 
-// router.beforeEach(function(transition) {
-//   transition.next()
-// })
-sync(store, router);
+// sync(router);
 router.start(App, '#app');
 
