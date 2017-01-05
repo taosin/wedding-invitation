@@ -33,5 +33,8 @@ router.map({
     }
 });
 
+router.redirect({
+    '*': '/page1'
+});
 router.start(App, '#app');
 
