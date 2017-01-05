@@ -41,7 +41,10 @@
         },
         route:{
         	data(transition){
-        		console.info(transition.from.name);
+        		const url = document.URL.split('#')[1];
+        		if(url === '/index' || url === '/' || url === '/index/'){
+        			window.router.go('/index/page1');
+        		}
         	}
         },
         methods:{
