@@ -1,7 +1,7 @@
 <template>
     <div style="height:100%;width:100%;position: absolute;" @touchstart="startTouch" @touchend="endTouch">
-       <router-view class="view" transition="expand" transition-mode="out-in"></router-view>
-   </div>
+        <router-view class="view" transition="expand" transition-mode="out-in"></router-view>
+    </div>
 </template>
 <script>
     export default{
@@ -29,12 +29,12 @@
                 const endY = this.afterPosition.y;
                 const endTime = this.afterPosition.time;
 
-                if(endY > y){
+                if(endY < y){
                     window.router.go('/index/page1');
+                }else{
+                    window.history.back(-1);
                 }
             }
-        },
-        computed:{
         },
         methods:{
             // 判断是否支持touch事件
@@ -72,7 +72,7 @@
 
         }
     };
- </script>
+</script>
 
 <style lang="less">
 

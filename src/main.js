@@ -1,8 +1,5 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import {
-    sync
-} from 'vuex-router-sync';
 import App from './App.vue';
 import index from './views/index.vue';
 import page1 from './views/page-1.vue';
@@ -14,19 +11,14 @@ const router = new Router({
     history: false,
     saveScrollPosition: true
 });
+
 window.router = router;
-
-Vue.use(require('vue-resource'));
-Vue.http.options.root = '/root';
-Vue.use(require('./ext/vue_ext.js'));
-
 router.map({
-	'/': {
+    '/': {
         name: 'index',
         component: index
     },
     '/index': {
-        name: 'index',
         component: index,
         subRoutes:{
             '/page1': {
@@ -36,11 +28,10 @@ router.map({
             '/page2': {
                 name: 'page2',
                 component: page2
-            }
+            },
         }
     }
 });
 
-// sync(router);
 router.start(App, '#app');
 
