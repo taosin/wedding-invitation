@@ -31,12 +31,11 @@
 				const endX = this.afterPosition.x;
 				const endY = this.afterPosition.y;
 				const endTime = this.afterPosition.time;
-
-				if(endY - y > this.screenY / 4 ){
-					window.router.go('/index/page'+ (this.markIndex + 2).toString() );
-				}else if( y- endY > this.screenY / 4 ){
+				if( (endY - y > this.screenY / 4 ) && this.markIndex > 0){
+					window.router.go('/index/page'+(this.markIndex).toString());
+				}else if( y - endY > this.screenY / 4 ){
 					if(this.markIndex > -1){
-						window.router.go('/index/page'+(this.markIndex + 1).toString());
+						window.router.go('/index/page'+ (this.markIndex + 2).toString() );
 					}
 				}
 			}
@@ -53,6 +52,7 @@
 					for (let i = 0; i < routers.length; i++) {
 						if(urlP === routers[i]){
 							this.markIndex = i;
+							console.info(this.markIndex +url);
 						}
 					}
 				}
