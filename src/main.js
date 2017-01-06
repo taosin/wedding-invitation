@@ -13,6 +13,7 @@ const router = new Router({
 });
 
 window.router = router;
+window.routers = ['page1', 'page2'];
 router.map({
     '/': {
         name: 'index',
@@ -34,7 +35,6 @@ router.map({
 });
 
 router.redirect({
-    '*': '/page1'
+    '*': '/index'
 });
 router.start(App, '#app');
-
