@@ -1,11 +1,16 @@
 <!-- 首页入口 -->
 <template>
 	<div style="height:100%;width:100%;position: absolute;" @touchstart="startTouch" @touchend="endTouch">
+		<div class="music play">
+			<span></span>
+			<audio :src="music" loop="loop" autoplay="autoplay" preload ></audio>
+		</div>
 		<router-view class="view" transition="expand" transition-mode="out-in"></router-view>
 	</div>
 </template>
 
 <script>
+	import './../../static/css/music.scss';
 	export default{
 		components:{
 		},
@@ -15,7 +20,8 @@
 				afterPosition: {},
 				screenX:0,
 				screenY:0,
-				markIndex:9999
+				markIndex:9999,
+				music:'http://7xrvyq.com1.z0.glb.clouddn.com/LoveParadise_C48kbps.mp3'
 			};
 		},
 		ready(){

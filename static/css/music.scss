@@ -1,0 +1,43 @@
+.music {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    z-index: 99;
+    span{
+        width: 18px;
+        position: absolute;
+        display: block;
+        width: 40px;
+        height: 40px;
+        top: 20px;
+        left: 20px;
+        background-image: url("./../img/music.png");
+        background-size: 20px 20px;
+    }
+}
+.music.play {
+    -webkit-animation: rotate 3.82s linear infinite;
+    animation: rotate 3.82s linear infinite;
+    &:after{
+        left: -100px;
+    }
+}
+@keyframes rotate{
+    0%{
+        -webkit-transform:rotate(0deg)
+    }
+    100%{
+        -webkit-transform:rotate(360deg)
+    }
+}
+@-webkit-keyframes rotate{
+    0%{
+        -webkit-transform:rotate(0deg)
+    }
+    100%{
+        -webkit-transform:rotate(360deg)
+    }
+}
