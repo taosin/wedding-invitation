@@ -1,7 +1,7 @@
 <!-- 首页入口 -->
 <template>
-	<div style="height:100%;width:100%;position: absolute;" @touchstart="startTouch" @touchend="endTouch">
-		<div class="music play">
+	<div style="height:100%;width:100%;position: absolute;background:#333" @touchstart="startTouch" @touchend="endTouch">
+		<div class="music {{isPlay?'play':''}}" @click="musicControl">
 			<span></span>
 			<audio :src="music" loop="loop" autoplay="autoplay" preload ></audio>
 		</div>
@@ -21,7 +21,8 @@
 				screenX:0,
 				screenY:0,
 				markIndex:9999,
-				music:'http://7xrvyq.com1.z0.glb.clouddn.com/LoveParadise_C48kbps.mp3'
+				music:'http://7xrvyq.com1.z0.glb.clouddn.com/LoveParadise_C48kbps.mp3',
+				isPlay:true
 			};
 		},
 		ready(){
@@ -108,6 +109,16 @@
             	const endX = afterPosition.x;
             	const endY = afterPosition.y;
             	const endTime = afterPosition.time;
+            },
+            musicControl(){
+            	var music = document.querySelector('audio');
+            	if (music.paused) {
+            		music.play();
+            		this.isPlay = true;
+            	} else {
+            		music.pause();
+            		this.isPlay = false;
+            	}
             }
         }
     };
