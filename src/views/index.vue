@@ -1,6 +1,6 @@
 <!-- 首页入口 -->
 <template>
-	<div style="height:100%;width:100%;position: absolute;background:#333" @touchstart="startTouch" @touchend="endTouch">
+	<div style="height:100%;width:100%;position: absolute;" @touchstart="startTouch" @touchend="endTouch">
 		<div class="music {{isPlay?'play':''}}" @click="musicControl">
 			<span></span>
 			<audio :src="music" loop="loop" autoplay="autoplay" preload ></audio>
