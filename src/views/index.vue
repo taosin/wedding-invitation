@@ -1,20 +1,26 @@
 <!-- 首页入口 -->
 <template>
-	<div style="height:100%;width:100%;position: absolute;" @touchstart="startTouch" @touchend="endTouch">
+	<div @touchstart="startTouch" @touchend="endTouch" class="index">
 		<div class="music {{isPlay?'play':''}}" @click="musicControl">
 			<span></span>
 			<audio :src="music" loop="loop" autoplay="autoplay" preload ></audio>
 		</div>
 		<!-- <router-view class="view" transition="expand" transition-mode="out-in"></router-view> -->
-		<div class="">
+		<div class="step-1" v-show="current===1">
 			
 		</div>
-
+		<div class="step-2" v-show="current===2">
+			
+		</div>
+		<div class="step-3" v-show="current===3">
+			
+		</div>
 	</div>
 </template>
 
 <script>
 	import './../../static/css/music.scss';
+	import './../../static/css/index.scss';
 	export default{
 		components:{
 		},
@@ -26,7 +32,8 @@
 				screenY:0,
 				markIndex:9999,
 				music:'http://7xrvyq.com1.z0.glb.clouddn.com/LoveParadise_C48kbps.mp3',
-				isPlay:true
+				isPlay:true,
+				current:1
 			};
 		},
 		ready(){
@@ -35,38 +42,38 @@
 		},
 		watch:{
 			afterPosition(val){
-				const x = this.position.x;
-				const y = this.position.y;
-				const time = this.position.time;
+				// const x = this.position.x;
+				// const y = this.position.y;
+				// const time = this.position.time;
 
-				const endX = this.afterPosition.x;
-				const endY = this.afterPosition.y;
-				const endTime = this.afterPosition.time;
-				if( (endY - y > this.screenY / 4 ) && this.markIndex > 0){
-					window.router.go('/index/page'+(this.markIndex).toString());
-				}else if( y - endY > this.screenY / 4 ){
-					if(this.markIndex > -1){
-						window.router.go('/index/page'+ (this.markIndex + 2).toString() );
-					}
-				}
+				// const endX = this.afterPosition.x;
+				// const endY = this.afterPosition.y;
+				// const endTime = this.afterPosition.time;
+				// if( (endY - y > this.screenY / 4 ) && this.markIndex > 0){
+				// 	window.router.go('/index/page'+(this.markIndex).toString());
+				// }else if( y - endY > this.screenY / 4 ){
+				// 	if(this.markIndex > -1){
+				// 		window.router.go('/index/page'+ (this.markIndex + 2).toString() );
+				// 	}
+				// }
 			}
 		},
 		route:{
 			data(transition){
-				const url = document.URL.split('#')[1];
-				let urlP = '';
-				const routers = window.routers;
-				if(url === '/index' || url === '/' || url === '/index/'){
-					window.router.go('/index/page1');
-				}else{
-					urlP = url.split('/')[2];
-					for (let i = 0; i < routers.length; i++) {
-						if(urlP === routers[i]){
-							this.markIndex = i;
-							console.info(this.markIndex +url);
-						}
-					}
-				}
+				// const url = document.URL.split('#')[1];
+				// let urlP = '';
+				// const routers = window.routers;
+				// if(url === '/index' || url === '/' || url === '/index/'){
+				// 	window.router.go('/index/page1');
+				// }else{
+				// 	urlP = url.split('/')[2];
+				// 	for (let i = 0; i < routers.length; i++) {
+				// 		if(urlP === routers[i]){
+				// 			this.markIndex = i;
+				// 			console.info(this.markIndex +url);
+				// 		}
+				// 	}
+				// }
 			}
 		},
 		methods:{
@@ -97,8 +104,22 @@
 
             // 滑动释放
             endTouch(event){
+            	const x = this.position.x;
+				const y = this.position.y;
+				const time = this.position.time;
+
+				const endX = this.afterPosition.x;
+				const endY = this.afterPosition.y;
+				const endTime = this.afterPosition.time;
             	const touch = event.changedTouches[0]; 
             	this.afterPosition = { x:touch.pageX,y:touch.pageY,time:+new Date() }; 
+            	if( (endY - y > this.screenY / 4 ) && this.markIndex > 0){
+            		if(this.current > 1){
+            			this.current = this.current - 1;
+            		}
+            	}else if( y - endY > this.screenY / 4 ){
+            		this.current = this.current + 1;
+            	}
             },
             // 判断滑动的位置
             touchPosition(position, afterPosition){
