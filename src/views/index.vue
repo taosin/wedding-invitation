@@ -6,7 +6,7 @@
 			<audio :src="music" loop="loop" autoplay="autoplay" preload ></audio>
 		</div>
 		<!-- <router-view class="view" transition="expand" transition-mode="out-in"></router-view> -->
-		<div class="step-1" v-show="current===1">
+		<div class="step-1" v-show="current===1" transition-mode="out-in" transition="index">
 			
 		</div>
 		<div class="step-2" v-show="current===2">
@@ -105,21 +105,20 @@
             // 滑动释放
             endTouch(event){
             	const x = this.position.x;
-				const y = this.position.y;
-				const time = this.position.time;
+            	const y = this.position.y;
+            	const time = this.position.time;
 
-				const endX = this.afterPosition.x;
-				const endY = this.afterPosition.y;
-				const endTime = this.afterPosition.time;
+            	const endX = this.afterPosition.x;
+            	const endY = this.afterPosition.y;
+            	const endTime = this.afterPosition.time;
             	const touch = event.changedTouches[0]; 
             	this.afterPosition = { x:touch.pageX,y:touch.pageY,time:+new Date() }; 
-            	if( (endY - y > this.screenY / 4 ) && this.markIndex > 0){
-            		if(this.current > 1){
-            			this.current = this.current - 1;
-            		}
-            	}else if( y - endY > this.screenY / 4 ){
+            	if( (endY - y > 50) && this.current > 1){
+            		this.current = this.current - 1;
+            	}else if( y - endY > 50 ){
             		this.current = this.current + 1;
             	}
+            	event.preventDefault();
             },
             // 判断滑动的位置
             touchPosition(position, afterPosition){
@@ -148,3 +147,55 @@
         }
     };
 </script>
+<style lang="less">
+
+
+    .index-transition {
+
+    }
+
+    .index-enter {
+        animation: index-in 0.2s;
+    }
+
+    .index-leave{
+        animation: index-out 0.5s;
+    }
+
+    @keyframes index-in {
+        0% {
+            opacity: 0;
+        }
+        25% {
+            opacity: 0.25;
+        }
+        50% {
+            opacity: 0.5;
+        }
+        75% {
+            opacity: 0.75;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes index-out {
+     0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0.75;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    75% {
+        opacity: 0.25;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+</style>
