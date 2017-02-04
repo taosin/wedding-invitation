@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="full-screen" content="yes">
     <title>陶鑫－曹馨怡【你是我一生对的人】</title>
     <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -15,9 +17,18 @@
 </html>
 <style type="text/css">
     body {
-        background: #f3f3f3;
-        color: #000000;
         height: 100%;
         width: 100%;
     }
+    html, body{
+        height: 100%;
+        overflow: hidden;
+    }
 </style>
+<script type="text/javascript">
+    document.addEventListener("touchmove", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+    }, false);
+</script>
