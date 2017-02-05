@@ -11,7 +11,8 @@
 		<div class="step-2" v-show="current===2" transition-mode="out-in" transition="index">
 		</div>
 		<div class="step-3" v-show="current===3" transition-mode="out-in" transition="index">
-			
+		</div>
+		<div class="step-4" v-show="current===4" transition-mode="out-in" transition="index">
 		</div>
 	</div>
 </template>
@@ -148,14 +149,12 @@
     };
 </script>
 <style lang="less">
-
-
 	.index-transition {
 
 	}
 
 	.index-enter {
-		animation: index-in 1s;
+		animation: index-in 1.5s;
 	}
 
 	.index-leave{
@@ -163,48 +162,97 @@
 	}
 
 	@keyframes index-in {
+
 		0% {
 			// opacity: 0;
-			top: 0%;
+			top: 100%;
 		}
-		25% {
+		10% {
+			// opacity: 0;
+			top: 90%;
+		}
+		20% {
 			// opacity: 0.25;
-			top: 25%;
+			top: 80%;
+		}
+		30% {
+			// opacity: 0;
+			top: 70%;
+		}
+		40% {
+			// opacity: 0.25;
+			top: 60%;
 		}
 		50% {
 			// opacity: 0.5;
 			top: 50%;
 		}
-		75% {
+		60% {
+			// opacity: 0;
+			top: 40%;
+		}
+		70% {
+			// opacity: 0.25;
+			top: 30%;
+		}
+		80% {
 			// opacity: 0.75;
-			top: 75%;
+			top: 20%;
+		}
+		90% {
+			// opacity: 0;
+			top: 10%;
 		}
 		100% {
 			// opacity: 1;
-			top: 100%;
+			top: 0%;
 		}
 	}
 
 	@keyframes index-out {
 		0% {
-			top: 100%;
-			// opacity: 1;
+			// opacity: 0;
+			top: 0%;
 		}
-		25% {
-			top: 75%;
-			// opacity: 0.75;
+		10% {
+			// opacity: 0;
+			top: 10%;
+		}
+		20% {
+			// opacity: 0.25;
+			top: 20%;
+		}
+		30% {
+			// opacity: 0;
+			top: 30%;
+		}
+		40% {
+			// opacity: 0.25;
+			top: 40%;
 		}
 		50% {
-			top: 50%;
 			// opacity: 0.5;
+			top: 50%;
 		}
-		75% {
-			top: 25%;
+		60% {
+			// opacity: 0;
+			top: 60%;
+		}
+		70% {
 			// opacity: 0.25;
+			top: 70%;
+		}
+		80% {
+			// opacity: 0.75;
+			top: 80%;
+		}
+		90% {
+			// opacity: 0;
+			top: 90%;
 		}
 		100% {
-			top: 0%;
-			// opacity: 0;
+			// opacity: 1;
+			top: 100%;
 		}
 	}
 
