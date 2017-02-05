@@ -3,17 +3,16 @@
 	<div @touchstart="startTouch" @touchend="endTouch" class="index">
 		<div class="music {{isPlay?'play':''}}" @click="musicControl">
 			<span></span>
-			<audio :src="music" loop="loop" autoplay="autoplay" preload ></audio>
+			<audio :src="music" loop="loop" :autoplay="autoplay" preload ></audio>
 		</div>
 		<!-- <router-view class="view" transition="expand" transition-mode="out-in"></router-view> -->
 		<div class="step-1" v-show="current===1" transition-mode="out-in" transition="index">
-			
 		</div>
-		<div class="step-2" v-show="current===2">
-			
+		<div class="step-2" v-show="current===2" transition-mode="out-in" transition="index">
 		</div>
-		<div class="step-3" v-show="current===3">
-			
+		<div class="step-3" v-show="current===3" transition-mode="out-in" transition="index">
+		</div>
+		<div class="step-4" v-show="current===4" transition-mode="out-in" transition="index">
 		</div>
 	</div>
 </template>
@@ -33,7 +32,8 @@
 				markIndex:9999,
 				music:'http://7xrvyq.com1.z0.glb.clouddn.com/LoveParadise_C48kbps.mp3',
 				isPlay:true,
-				current:1
+				current:1,
+				autoplay:true
 			};
 		},
 		ready(){
@@ -113,9 +113,9 @@
             	const endTime = this.afterPosition.time;
             	const touch = event.changedTouches[0]; 
             	this.afterPosition = { x:touch.pageX,y:touch.pageY,time:+new Date() }; 
-            	if( (endY - y > 50) && this.current > 1){
+            	if( (endY - y > 150) && this.current > 1){
             		this.current = this.current - 1;
-            	}else if( y - endY > 50 ){
+            	}else if( y - endY > 150 ){
             		this.current = this.current + 1;
             	}
             	event.preventDefault();
@@ -135,6 +135,7 @@
             	const endTime = afterPosition.time;
             },
             musicControl(){
+            	alert('111');
             	var music = document.querySelector('audio');
             	if (music.paused) {
             		music.play();
@@ -148,54 +149,111 @@
     };
 </script>
 <style lang="less">
+	.index-transition {
 
+	}
 
-    .index-transition {
+	.index-enter {
+		animation: index-in 1.5s;
+	}
 
-    }
+	.index-leave{
+		animation: index-out 1.5s;
+	}
 
-    .index-enter {
-        animation: index-in 0.2s;
-    }
+	@keyframes index-in {
 
-    .index-leave{
-        animation: index-out 0.5s;
-    }
+		0% {
+			// opacity: 0;
+			top: 100%;
+		}
+		10% {
+			// opacity: 0;
+			top: 90%;
+		}
+		20% {
+			// opacity: 0.25;
+			top: 80%;
+		}
+		30% {
+			// opacity: 0;
+			top: 70%;
+		}
+		40% {
+			// opacity: 0.25;
+			top: 60%;
+		}
+		50% {
+			// opacity: 0.5;
+			top: 50%;
+		}
+		60% {
+			// opacity: 0;
+			top: 40%;
+		}
+		70% {
+			// opacity: 0.25;
+			top: 30%;
+		}
+		80% {
+			// opacity: 0.75;
+			top: 20%;
+		}
+		90% {
+			// opacity: 0;
+			top: 10%;
+		}
+		100% {
+			// opacity: 1;
+			top: 0%;
+		}
+	}
 
-    @keyframes index-in {
-        0% {
-            opacity: 0;
-        }
-        25% {
-            opacity: 0.25;
-        }
-        50% {
-            opacity: 0.5;
-        }
-        75% {
-            opacity: 0.75;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
-
-    @keyframes index-out {
-     0% {
-        opacity: 1;
-    }
-    25% {
-        opacity: 0.75;
-    }
-    50% {
-        opacity: 0.5;
-    }
-    75% {
-        opacity: 0.25;
-    }
-    100% {
-        opacity: 0;
-    }
-}
+	@keyframes index-out {
+		0% {
+			// opacity: 0;
+			top: 0%;
+		}
+		10% {
+			// opacity: 0;
+			top: 10%;
+		}
+		20% {
+			// opacity: 0.25;
+			top: 20%;
+		}
+		30% {
+			// opacity: 0;
+			top: 30%;
+		}
+		40% {
+			// opacity: 0.25;
+			top: 40%;
+		}
+		50% {
+			// opacity: 0.5;
+			top: 50%;
+		}
+		60% {
+			// opacity: 0;
+			top: 60%;
+		}
+		70% {
+			// opacity: 0.25;
+			top: 70%;
+		}
+		80% {
+			// opacity: 0.75;
+			top: 80%;
+		}
+		90% {
+			// opacity: 0;
+			top: 90%;
+		}
+		100% {
+			// opacity: 1;
+			top: 100%;
+		}
+	}
 
 </style>
