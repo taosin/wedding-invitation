@@ -9,10 +9,7 @@ module.exports = {
         'alert':true,
         '$':true,
         'Draggable':true,
-        'VerifyCode':true,
-        'Qiniu':true,
-        'qq':true,
-        'calculate':true
+        'Swiper':true,
     },
     rules: {
         'arrow-parens': 0,

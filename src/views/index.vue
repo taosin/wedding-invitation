@@ -1,16 +1,25 @@
 <!-- 首页入口 -->
 <template>
-	<div id="listGroupA">
-		<div class="music {{isPlay?'play':''}}" @click="musicControl">
-			<span></span>
-			<audio :src="music" loop="loop" :autoplay="autoplay" preload ></audio>
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">Slide 1</div>
+			<div class="swiper-slide">Slide 2</div>
+			<div class="swiper-slide">Slide 3</div>
+			<div class="swiper-slide">Slide 4</div>
+			<div class="swiper-slide">Slide 5</div>
+			<div class="swiper-slide">Slide 6</div>
+			<div class="swiper-slide">Slide 7</div>
+			<div class="swiper-slide">Slide 8</div>
+			<div class="swiper-slide">Slide 9</div>
+			<div class="swiper-slide">Slide 10</div>
 		</div>
+		<div class="swiper-pagination index-pagination"></div>
 	</div>
 </template>
 
 <script>
-	import './../../static/css/music.scss';
-	import './../../static/css/index.scss';
+	// import './../../static/css/music.scss';
+	require('./../../static/js/swiper.min.js');
 	export default{
 		components:{
 		},
@@ -28,17 +37,12 @@
 			};
 		},
 		attached(){
-			util.toucher(document.getElementById('listGroupA'))
-			.on('swipeLeft','.list-item',function(){
-				addClass(this,'list-item-status-del');
-				return false;
-			})
-			.on('swipeRight','.list-item',function(){
-				removeClass(this,'list-item-status-del');
-				return false;
-			})
-			.on('singleTap','.list-item-del',function(){
-				alert('这只是个demo！');
+			var swiper = new Swiper('.swiper-container', {
+				paginationClickable: true,
+				direction: 'vertical',
+				height : window.innerHeight,
+				pagination: '.swiper-pagination',
+				paginationType: 'fraction'
 			});
 		},
 		watch:{
@@ -59,5 +63,48 @@
 		}
 	};
 </script>
-<style lang="less">
+<style>
+	html, body {
+		position: relative;
+		height: 100%;
+	}
+	body {
+		background: #eee;
+		font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+		font-size: 14px;
+		color:#000;
+		margin: 0;
+		padding: 0;
+	}
+	.swiper-container {
+		width: 100%;
+		height: 100%;
+	}
+	.swiper-slide {
+		text-align: center;
+		font-size: 18px;
+		background: #fff;
+		width: 100%;
+		height: 100%;
+		/* Center slide text vertically */
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		/*display: flex;*/
+		/*-webkit-box-pack: center;*/
+		/*-ms-flex-pack: center;*/
+		/*-webkit-justify-content: center;*/
+		justify-content: center;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		-webkit-align-items: center;
+		align-items: center;
+		border-bottom: 1px solid red;
+	}
+	.index-pagination{
+		position: absolute;
+		z-index: 99999;
+		bottom: 5px;
+		right: 10px;
+	}
 </style>
