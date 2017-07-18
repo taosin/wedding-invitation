@@ -2,7 +2,9 @@
 <template>
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide">Slide 1</div>
+			<div class="swiper-slide">
+				<page-one :initial-slide.sync='initialSlide'></page-one>
+			</div>
 			<div class="swiper-slide">Slide 2</div>
 			<div class="swiper-slide">Slide 3</div>
 			<div class="swiper-slide">Slide 4</div>
@@ -20,8 +22,10 @@
 <script>
 	// import './../../static/css/music.scss';
 	require('./../../static/js/swiper.min.js');
+	import pageOne from '../components/page1.vue';
 	export default{
 		components:{
+			pageOne
 		},
 		data(){
 			return{
@@ -33,19 +37,26 @@
 				music:'http://7xrvyq.com1.z0.glb.clouddn.com/LoveParadise_C48kbps.mp3',
 				isPlay:false,
 				current:1,
-				autoplay:false
+				autoplay:false,
+				initialSlide:1
 			};
 		},
 		attached(){
+			const self = this;
 			var swiper = new Swiper('.swiper-container', {
 				paginationClickable: true,
 				direction: 'vertical',
 				height : window.innerHeight,
 				pagination: '.swiper-pagination',
-				paginationType: 'fraction'
+				paginationType: 'fraction',
+				onTransitionEnd(swipers){
+					self.initialSlide = swipers.activeIndex + 1;
+				}
 			});
 		},
 		watch:{
+			initialSlide(val){
+			}
 		},
 		route:{
 		},
