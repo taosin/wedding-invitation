@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>陶鑫&曹馨怡婚礼邀请函</title>
+	<link rel="stylesheet" href="./index.less">
+	<script type="text/javascript" src="./vue.js"></script>
+</head>
+
+<body>
+	<div class="page-index" id="app">
+		<!-- <div class="mask"></div> -->
+		<div class="side">
+			<div class="side-body">
+				<div class="caption">陶鑫&曹馨怡</div>
+				<div class="desc">2017年10月5日新婚之喜！</div>
+				<div class="countdown">
+					<div class="title">距离大喜还有</div>
+					<div class="countdown-body">
+						<!-- <span>1</span><span>6</span><span>3</span><strong>天</strong> -->
+						<span v-for="d in date">{{d}}</span><strong>天</strong>
+					</div>
+				</div>
+				<div class="qr-code">
+					<div class="qr-code-body">
+					</div>
+					<div class="scan">扫一扫观看邀请函</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		window.vm = new Vue({
+			el: '#app',
+			data(){
+				return{
+					date: []
+				}
+			},
+			mounted(){
+				this.date = this.countDownDay().toString().split('');
+			},
+			methods:{
+				countDownDay(){
+					var time = new Date('2017-10-05 00:00:00').getTime() - new Date().getTime();
+					var day = parseInt(time / (24 * 3600 * 1000));
+					return day;
+				}
+			}
+		})
+	</script>
+</body>
+
+</html>
