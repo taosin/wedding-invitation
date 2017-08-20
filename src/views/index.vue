@@ -44,7 +44,7 @@
 		attached(){
 			const self = this;
 			var swiper = new Swiper('.swiper-container', {
-				paginationClickable: true,
+				// autoplay : 5000,
 				direction: 'vertical',
 				height : window.innerHeight,
 				pagination: '.swiper-pagination',
@@ -110,12 +110,17 @@
 		-ms-flex-align: center;
 		-webkit-align-items: center;
 		align-items: center;
-		border-bottom: 1px solid red;
+		/*border-bottom: 1px solid red;*/
 	}
 	.index-pagination{
 		position: absolute;
 		z-index: 99999;
-		bottom: 5px;
-		right: 10px;
+		bottom: 2px;
+		right: 2px;
+		background: #ddd;
+		padding: 2px 6px;
+		border-radius: 10px 0 10px 0;
+		color: #fff;
+		opacity: .8;
 	}
 </style>

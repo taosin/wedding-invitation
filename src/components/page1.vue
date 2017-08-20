@@ -1,7 +1,9 @@
 <template>
-	<div class="page1" v-if="initialSlide===1">
-		<h3>第一页</h3>
-		<div class="donghua">eeee</div>
+	<div class="page1">
+		<div v-if="initialSlide===1">
+			<h3>第一页</h3>
+			<div class="donghua">eeee</div>
+		</div>
 	</div>
 </template>
 <script>
@@ -48,8 +50,8 @@
 		{
 			0%   {background:red; left:0px; top:0px;}
 			25%  {background:yellow; left:200px; top:0px;}
-			50%  {background:blue; left:200px; top:200px;}
-			75%  {background:green; left:0px; top:200px;}
+			50%  {background:blue; left:150px; top:150px;}
+			75%  {background:green; left:100px; top:100px;}
 			100% {background:red; left:0px; top:0px;}
 		}
 
