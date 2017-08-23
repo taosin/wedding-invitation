@@ -1,0 +1,147 @@
+.page1 {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    .bk_01 {
+        background: url(./../img/page_01.jpg);
+        background-size: cover;
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        animation: page101 1s;
+        -moz-animation: page101 1s;
+        -webkit-animation: page101 1s;
+        -o-animation: page101 1s;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+    }
+    .welcome {
+        background: url(./../img/page_text_01.png);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        position: absolute;
+        z-index: 1;
+        top: 10%;
+        height: 100px;
+        left: 10%;
+        right: 10%;
+        animation: page102 1s;
+        animation-delay: 1s;
+        -webkit-animation-delay: 1s;
+        opacity: 0;
+        animation-fill-mode: forwards;
+    }
+    .name {
+        background: url(./../img/page_text_02.png);
+        background-size: 100%;
+        position: absolute;
+        left: 47%;
+        width: 6%;
+        z-index: 1;
+        height: 170px;
+        /* top: 10px; */
+        background-repeat: no-repeat;
+        bottom: 15%;
+        animation: page103 2s;
+        animation-delay: 2s;
+        -webkit-animation-delay: 2s;
+        opacity: 0;
+        animation-fill-mode: forwards;
+    }
+    @-moz-keyframes page101 {
+        0% {
+            width: 60%;
+            height: 60%;
+        }
+        100% {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    @-webkit-keyframes page101 {
+        0% {
+            width: 60%;
+            height: 60%;
+        }
+        100% {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    @keyframes page101 {
+        0% {
+            width: 60%;
+            height: 60%;
+            top: 20%;
+        }
+        100% {
+            width: 100%;
+            height: 100%;
+            top: 0%;
+        }
+    }
+    @keyframes page102 {
+        0% {
+            top: 0;
+            opacity: 0;
+        }
+        100% {
+            top: 10%;
+            opacity: 1;
+        }
+    }
+    @keyframes page103 {
+        0% {
+            left: 100%;
+            opacity: 1;
+            // transform: rotate(20deg);
+            // -ms-transform: rotate(20deg);
+            // /* IE 9 */
+            // -moz-transform: rotate(20deg);
+            // /* Firefox */
+            // -webkit-transform: rotate(20deg);
+            // /* Safari 和 Chrome */
+            // -o-transform: rotate(20deg);
+        }
+        // 25% {
+        //     left: 100%;
+        //     opacity: 1;
+        //     transform: rotate(110deg);
+        //     -ms-transform: rotate(110deg);
+        //     /* IE 9 */
+        //     -moz-transform: rotate(110deg);
+        //     /* Firefox */
+        //     -webkit-transform: rotate(110deg);
+        //     /* Safari 和 Chrome */
+        //     -o-transform: rotate(110deg);
+        // }
+        // 50% {
+        //     left: 100%;
+        //     opacity: 1;
+        //     transform: rotate(10deg);
+        //     -ms-transform: rotate(10deg);
+        //     /* IE 9 */
+        //     -moz-transform: rotate(10deg);
+        //     /* Firefox */
+        //     -webkit-transform: rotate(10deg);
+        //     /* Safari 和 Chrome */
+        //     -o-transform: rotate(10deg);
+        // }
+        100% {
+            left: 47%;
+            opacity: 1;
+            // transform: rotate(0deg);
+            // -ms-transform: rotate(0deg);
+            // /* IE 9 */
+            // -moz-transform: rotate(0deg);
+            // /* Firefox */
+            // -webkit-transform: rotate(0deg);
+            // /* Safari 和 Chrome */
+            // -o-transform: rotate(0deg);
+        }
+    }
+}

@@ -1,26 +1,29 @@
 <!-- 首页入口 -->
 <template>
-	<div class="swiper-container">
-		<div class="swiper-wrapper">
-			<div class="swiper-slide">
-				<page-one :initial-slide.sync='initialSlide'></page-one>
+	<div>
+		<div class="music {{isPlay?'play':''}}" @click="isPlay=!isPlay"><span></span><audio :src="music" loop="loop" autoplay="autoplay" preload :muted="!isPlay"></audio></div>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<page-one :initial-slide.sync='initialSlide'></page-one>
+				</div>
+				<div class="swiper-slide">Slide 2</div>
+				<div class="swiper-slide">Slide 3</div>
+				<div class="swiper-slide">Slide 4</div>
+				<div class="swiper-slide">Slide 5</div>
+				<div class="swiper-slide">Slide 6</div>
+				<div class="swiper-slide">Slide 7</div>
+				<div class="swiper-slide">Slide 8</div>
+				<div class="swiper-slide">Slide 9</div>
+				<div class="swiper-slide">Slide 10</div>
 			</div>
-			<div class="swiper-slide">Slide 2</div>
-			<div class="swiper-slide">Slide 3</div>
-			<div class="swiper-slide">Slide 4</div>
-			<div class="swiper-slide">Slide 5</div>
-			<div class="swiper-slide">Slide 6</div>
-			<div class="swiper-slide">Slide 7</div>
-			<div class="swiper-slide">Slide 8</div>
-			<div class="swiper-slide">Slide 9</div>
-			<div class="swiper-slide">Slide 10</div>
+			<div class="swiper-pagination index-pagination"></div>
 		</div>
-		<div class="swiper-pagination index-pagination"></div>
 	</div>
 </template>
 
 <script>
-	// import './../../static/css/music.scss';
+	import './../../static/css/music.scss';
 	require('./../../static/js/swiper.min.js');
 	import pageOne from '../components/page1.vue';
 	export default{
@@ -35,16 +38,15 @@
 				screenY:0,
 				markIndex:9999,
 				music:'http://7xrvyq.com1.z0.glb.clouddn.com/LoveParadise_C48kbps.mp3',
-				isPlay:false,
 				current:1,
 				autoplay:false,
-				initialSlide:1
+				initialSlide:1,
+				isPlay: true
 			};
 		},
 		attached(){
 			const self = this;
 			var swiper = new Swiper('.swiper-container', {
-				// autoplay : 5000,
 				direction: 'vertical',
 				height : window.innerHeight,
 				pagination: '.swiper-pagination',
@@ -78,6 +80,7 @@
 	html, body {
 		position: relative;
 		height: 100%;
+		overflow: hidden;
 	}
 	body {
 		background: #eee;
